@@ -5,6 +5,7 @@ using namespace torch;
 
 #define WITHIN_BOUNDS(x, y, H, W) (x >= 0 && x < H && y >= 0 && y < W)
 
+
 template <typename scalar_t>
 static void correlate_patch(
     TensorAccessor<scalar_t,3> input1,
