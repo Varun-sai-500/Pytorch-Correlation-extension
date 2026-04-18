@@ -5,6 +5,7 @@ using namespace torch;
 
 #define WITHIN_BOUNDS(x, y, H, W) (x >= 0 && x < H && y >= 0 && y < W)
 
+
 template <typename scalar_t>
 static void correlate_patch(
     TensorAccessor<scalar_t,3> input1,
@@ -133,13 +134,13 @@ std::vector<torch::Tensor> correlation_cpp_backward(
     int dilationH, int dilationW,
     int dilation_patchH, int dilation_patchW,
     int dH, int dW) {
-  
+
   const int batch_size = input1.size(0);
   const int patchRadH = (patchH - 1) / 2;
   const int patchRadW = (patchW - 1) / 2;
   const int oH = gradOutput.size(3);
   const int oW = gradOutput.size(4);
-  
+
   auto gradInput1 = torch::zeros_like(input1);
 
   auto gradInput2 = torch::zeros_like(input2);
